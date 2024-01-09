@@ -25,6 +25,9 @@ def hello_world():  # put application's code here
 @app.route('/api')
 def api():
     return { "secret":"The cake is a lie" }
+@app.route('/lecturer')
+def show_lecturer():
+    return render_template("lecturer.html")
 
 
 if __name__ == '__main__':

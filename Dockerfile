@@ -2,6 +2,11 @@
 
 FROM python:3.10-buster
 
+# TAILWIND CLI standalone + making it executable
+COPY ./app/tailwindcss-linux-x64 /usr/local/bin/tailwindcss
+RUN chmod +x /usr/local/bin/tailwindcss
+
+
 WORKDIR /app
 
 RUN pip install pipenv
@@ -9,9 +14,18 @@ RUN pip install pipenv
 COPY Pipfile .
 COPY Pipfile.lock .
 
+COPY . .
+
+RUN ls -la
+RUN ls -la ./app
+RUN ls -la ./app/templates
+RUN ls -la ./app/static
+
+RUN tailwindcss -i ./app/static/styles.css -o ./app/static/output.css
+
 RUN pipenv install --system --deploy
 
-COPY . .
+
 
 EXPOSE 80
 
