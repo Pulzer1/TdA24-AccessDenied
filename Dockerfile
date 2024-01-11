@@ -16,16 +16,9 @@ COPY Pipfile.lock .
 
 COPY . .
 
-RUN ls -la
-RUN ls -la ./app
-RUN ls -la ./app/templates
-RUN ls -la ./app/static
-
 RUN tailwindcss -i ./app/static/styles.css -o ./app/static/output.css
 
 RUN pipenv install --system --deploy
-
-
 
 EXPOSE 80
 
