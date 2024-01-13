@@ -2,14 +2,45 @@
 <html>
 <head>
 <link href="{{ url_for('static', filename='output.css') }}" rel="stylesheet">
-
-<title>Access Denied</title>
+<title>TdA-Seznam učitelů</title>
+<link rel="icon" href="../static/images/TdA_sipka_bilomodra.svg" type="image/svg">
+<script>
+    (function() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+    })();
+</script>
 </head>
 
-<body>
-    <h1>
-        <div class="bg-black"> WWFAWFWAGWAGWFAKWOFWKAOFJWOAFJOWAJFOWJAFJOAWJFOWAJFOWA</div>
-    </h1>
+<body class="bg-white dark:bg-jet dark:text-white">
+    
+    <div class="relative flex justify-between items-center menu" >
+        <div class="flex">
+        <a href="/"><h1 class="text-skyblue font-bold font-lalezar text-[25px] top-[5px] mx-[20px] relative">Teacher <span class="text-jet dark:text-white">digital</span> Agency</h1></a>    
+        <a href="lecturer"><button class="text-jet dark:text-white hover:font-bold animated-button w-full mx-[20px] dark:hover:text-skyblue p-2 text-[20px] font-lalezar hover:text-skyblue">Lecturers</button></a>
+        <button class="text-jet dark:text-white animated-button hover:font-bold mx-[20px] p-2 text-[20px] dark:hover:text-skyblue font-lalezar hover:text-skyblue">
+            FAQ
+        </button>
+        </div>
+        
+        
+          
+
+        <div class="h-full flex flex-col items-center m-[10px]">
+            <button class="login w-[90px] p-2">
+                Přihlašení
+            </button>
+            
+            <input type="checkbox" id="darkmode-toggle"/>
+            <label class="relative bg-skyblue m-[5px] w-[50px] h-[25px] block rounded-[200px] shadow-[inset_0px_5px_15px_rgba(0,0,0,0.4),_rgba(255,255,255,0.4)] cursor-pointer after:absolute darkmode-switch"for="darkmode-toggle"></label>
+        </div>
+    
+    
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>
 
 </html>
