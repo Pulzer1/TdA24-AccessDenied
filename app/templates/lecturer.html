@@ -9,12 +9,12 @@
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             document.documentElement.classList.add('dark');
-        }
+        } 
     })();
 </script>
 </head>
 
-<body class="bg-white dark:bg-jet dark:text-white">
+<body class="bg-white dark:bg-jet dark:text-white font-opensans">
     
     <div class="relative flex justify-between items-center menu" >
         <div class="flex">
@@ -24,9 +24,6 @@
             FAQ
         </button>
         </div>
-        
-        
-          
 
         <div class="h-full flex flex-col items-center m-[10px]">
             <button class="login w-[90px] p-2">
@@ -36,9 +33,56 @@
             <input type="checkbox" id="darkmode-toggle"/>
             <label class="relative bg-skyblue m-[5px] w-[50px] h-[25px] block rounded-[200px] shadow-[inset_0px_5px_15px_rgba(0,0,0,0.4),_rgba(255,255,255,0.4)] cursor-pointer after:absolute darkmode-switch"for="darkmode-toggle"></label>
         </div>
-    
-    
     </div>
+
+
+    <div class="flex relative flex-row ml-[300px] mt-[100px] w-fit">
+
+        <div class="flex relative w-fit flex-col items-center">
+            <img class="w-[300px] border-[5px] border-prussianblue rounded-full " src="https://tourdeapp.cz/storage/images/2023_02_25/412ff296a291f021bbb6de10e8d0b94863fa89308843b/big.png.webp">
+            <span class="text-white relative top-[20px] rounded-2xl w-[250px] flex items-center justify-center h-[35px] font-lalezar text-center place-items-center bg-prussianblue font-bold">1300,- Kč/hodina</span>
+            <div class="flex-col relative flex top-[30px] text-white bg-skyblue rounded-2xl w-[250px] justify-center items-center text-center h-[100px]">
+                <span class="font-lalezar font-bold">Kontakty </span><br>
+                +420 722 482 974 <br>
+                placha@scg.cz <br>
+                predseda@scg.cz
+            </div>
+        </div>
+        <div class="flex relative left-[30px] flex-col">
+            <div class="flex relative left-[30px] text-center items-start">
+                <span>
+                    <span class="font-bold font-lalezar text-jet dark:text-white text-[35px]">Mgr. Petra Swil Plachá MBA</span> <br>
+                    <span class="text-center self-center font-opensans text-[15px]">Aktivní studentka / Předsedkyně spolku / Projektová manažerka</span>
+                </span>
+                <div class="left-[100px] relative flex items-center">
+                <img src="../static/images/location_icon.svg" src-light="../static/images/location_icon.svg" src-dark="../static/images/location_icon_white.svg" class="w-[45px]" id="location_icon"/>
+                <span class="left-[30px] relative font-opensans text-[30px] text-jet font-bold dark:text-white">Brno</span>
+                </div>  
+            </div>
+            <div class="tagsContainer flex flex-wrap relative w-[900px] mt-[30px]">
+                <span class="Tag">Dobrovolnictví</span>
+                <span class="Tag">Studentské spolky</span>
+                <span class="Tag">Efektivní učení</span>
+                <span class="Tag">Prezentační dovednosti</span>
+                <span class="Tag">Marketing pro neziskové studentské projekty</span>
+                <span class="Tag">Mimoškolní aktivity</span>
+                <span class="Tag">Projektový management, event management</span>
+                <span class="Tag">Fundraising pro neziskové studentské projekty</span>
+
+            </div>
+            <div class="w-[900px] mt-[50px] relative text-[20px]">
+                <p>Baví mě organizovat věci. Ať už to bylo vyvíjení mobilních aplikací ve Futured, pořádání konferencí,
+    spolupráce na soutěžích Prezentiáda, pIšQworky, <b>Tour de App</b> a Středoškolák roku, nebo třeba dobrovolnictví,
+    vždycky jsem skončila u projektového managementu, rozvíjení soft-skills a vzdělávání. <br>
+    U studentských projektů a akcí jsem si vyzkoušela snad všechno od marketingu po logistiku a moc ráda to předám dál.
+    Momentálně studuji Pdf MUNI a FF MUNI v Brně.</p>
+            </div>
+        </div>
+        
+    </div>
+    
+    
+   
     
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>

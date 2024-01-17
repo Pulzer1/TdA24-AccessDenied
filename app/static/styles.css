@@ -6,6 +6,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Lalezar&display=swap');
 
 
+@layer utilities {
+    .font-lalezar {
+        font-family: 'Lalezar', sans-serif;
+    }
+    .font-opensans {
+        font-family: 'Open Sans', sans-serif;
+    }
+    .bg-skyblue {
+        background-color: #74C7D3; 
+    }
+    .bg-prussianblue {
+        background-color: #00384D; 
+    }
+    .bg-sunglow {
+        background-color: #FECB2E; 
+    }
+    .bg-jet {
+        background-color: #333333; 
+    }
+    .text-jet {
+        color: #333333; 
+    }
+    .text-skyblue {
+        color: #74C7D3;
+    }
+
+}
 
 body {
     transition: background-color 0.3s, color 0.3s;
@@ -64,11 +91,19 @@ input:checked + label:after {
     left: 0;
     bottom: 0;
     width: 0;
-    height: 1px; /* Height of the line */
-    background-color: skyblue; /* Color of the line */
-    transition: width 0.3s ease; /* Transition effect */
+    height: 1px;
+    background-color: skyblue;
+    transition: width 0.3s ease;
 }
 
 .animated-button:hover::after {
-    width: 100%; /* Full width on hover */
+    width: 100%;
 }
+
+.tagsContainer .Tag
+{
+@apply bg-skyblue rounded-xl mx-[5px] my-[4px] px-[10px] py-[1px] text-white;
+}
+.tagsContainer .Tag:nth-child(even) {
+    @apply bg-prussianblue;
+  }
