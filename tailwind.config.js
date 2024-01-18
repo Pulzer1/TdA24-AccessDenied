@@ -8,12 +8,7 @@ module.exports = {
     "../app/templates/lecturer.html",
     "../app/templates/index.html"
   ],
-  safelist: [
-    {
-      pattern: /./ 
-    },    ],
-    
-  theme: {
+     theme: {
   extend: {
     colors: {
       jet: '#333333',
