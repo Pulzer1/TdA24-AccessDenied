@@ -1,12 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
-  content:
-  [
-    "./templates/**/*.html",
+  content:[
     "./templates/index.html",
-    "./templates/lecturer.html"
+    "./templates/lecturer.html",
+    "./app/templates/lecturer.html",
+    "../app/templates/lecturer.html",
+    "../app/templates/index.html"
   ],
+  safelist: [
+    {
+      pattern: /./ 
+    },    ],
+    
   theme: {
   extend: {
     colors: {

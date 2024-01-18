@@ -3,7 +3,7 @@
 FROM python:3.10-buster
 
 # TAILWIND CLI standalone + making it executable
-COPY ./app/tailwindcss-linux-x64 /usr/local/bin/tailwindcss
+COPY ./tailwindcss-linux-x64 /usr/local/bin/tailwindcss
 RUN chmod +x /usr/local/bin/tailwindcss
 
 
