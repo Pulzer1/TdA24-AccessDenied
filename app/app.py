@@ -35,7 +35,7 @@ class LecturerListAPI(Resource):
         parser.add_argument('claim', store_missing=False, default='')
         parser.add_argument('bio', store_missing=False, default='')
         parser.add_argument('price_per_hour', type=int, store_missing=False, default=0)
-        parser.add_argument('price_per_hour', type=int, required=False)
+        parser.add_argument('tags', action='append', store_missing=False, default=[])
         data = parser.parse_args()
 
         contact_data = data.get('contact') or {}
