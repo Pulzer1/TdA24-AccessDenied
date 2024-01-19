@@ -1,9 +1,10 @@
 import os
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from . import db as db_module
 from flask_restful import Resource, Api, reqparse
 from app.models import db, Lecturer, Tag, ContactInfo
+
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -45,13 +46,14 @@ class LecturerListAPI(Resource):
                 if not tag:
                     tag = Tag(name=tag_name)
                     db.session.add(tag)
+                    db.session.commit()
                 lecturer.tags.append(tag)
 
         db.session.add(contact_info)
         db.session.add(lecturer)
         db.session.commit()
-        print(lecturer.to_dict())
-        return lecturer.to_dict()
+        
+        return lecturer.to_dict(), 200
 
 class LecturerAPI(Resource):
     def get(self, uuid):
