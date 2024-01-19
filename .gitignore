@@ -2,3 +2,4 @@ instance/
 local/
 .idea/
 app/__pycache__/
+tests_commands.txt

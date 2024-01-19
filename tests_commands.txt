@@ -1,0 +1,21 @@
+# POST TEST API
+curl -X POST http://127.0.0.1:5000/lecturers -H "Content-Type: application/json" -d '{"first_name": "Joe", "last_name": "test"}'
+curl -X POST http://127.0.0.1:5000/api/lecturers -H "Content-Type: application/json" -d '{"first_name": "FWAG", "last_name": "XXXX", "tags":["Science", "Math"], "contact":{"telephone_numbers":["+42053253523532"], "emails":["xxx@example.com"]}}'
+
+# GET TEST API list lecturers
+curl -X GET http://127.0.0.1:5000/lecturers
+
+# GET TEST API uuid lecturer
+curl -X GET http://127.0.0.1:5000/lecturers/{uuid}
+
+# PUT TEST API uuid lecturer
+    curl -X PUT http://127.0.0.1:5000/lecturers/{uuid} -H "Content-Type: application/json" -d '{"first_name": "PUT", "last_name": "WORKS", "tags":["Science", "soccer"], "contact":{"telephone_numbers":["+31583715915731879"], "emails":["xxx@putworks.com"]}}'
+
+# DELETE TEST API uuid lecturer
+curl -X DELETE http://127.0.0.1:5000/lecturers/{uuid}
+
+
+docker build . -t tda-flask
+docker run -d -p 8080:80 --restart unless-stopped --memory 500m --cpus "2.0" tda-flask
+
+

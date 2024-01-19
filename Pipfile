@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 flask = "*"
 colorama = "*"
+flask-restful = "*"
+flask-sqlalchemy = "*"
+uuid = "*"
 
 [dev-packages]
 
