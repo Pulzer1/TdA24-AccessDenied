@@ -20,9 +20,6 @@ RUN tailwindcss -i ./app/static/styles.css -o ./app/static/output.css
 
 RUN pipenv install --system --deploy
 
-RUN pipenv run python init_db.py
-
-
 EXPOSE 80
 
 CMD ["./start.sh"]
