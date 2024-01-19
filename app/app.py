@@ -50,14 +50,8 @@ class LecturerListAPI(Resource):
         db.session.add(contact_info)
         db.session.add(lecturer)
         db.session.commit()
-
-        return lecturer.to_dict(), 
-
-
-
-        db.session.add(lecturer)
-        db.session.commit()
-        return lecturer.to_dict(), 201
+        print(lecturer.to_dict())
+        return lecturer.to_dict()
 
 class LecturerAPI(Resource):
     def get(self, uuid):
