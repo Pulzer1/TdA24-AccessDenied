@@ -24,9 +24,18 @@ def close_db(e=None):
 
 
 def init_db():
-    """
-    Inicializuje databázi dle schema.sql
-    """
+    
+    database_path = os.path.join(os.path.dirname(__file__), 'instance/tourdeflask.sqlite')
+    connection = sqlite3.connect(database_path)
+    cursor = connection.cursor()
+
+    schema_path = os.path.join(os.path.dirname(__file__), 'app/schema.sql')
+    with open(schema_path, 'r') as f:
+        cursor.executescript(f.read())
+
+    connection.commit()
+    connection.close()
+
     db = get_db()
 
     with current_app.open_resource('schema.sql') as f:
