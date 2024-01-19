@@ -28,6 +28,14 @@ class LecturerListAPI(Resource):
         parser.add_argument('last_name', required=True, help="Last name cannot be blank")
         parser.add_argument('contact', type=dict, location='json')  # Expecting a dictionary for contact
         parser.add_argument('tags', action='append')
+        parser.add_argument('title_before', required=False)
+        parser.add_argument('middle_name', required=False)
+        parser.add_argument('title_after', required=False)
+        parser.add_argument('picture_url', required=False)
+        parser.add_argument('location', required=False)
+        parser.add_argument('claim', required=False)
+        parser.add_argument('bio', required=False)
+        parser.add_argument('price_per_hour', type=int, required=False)
         data = parser.parse_args()
 
         contact_data = data.get('contact') or {}
