@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask, render_template, request
-from . import db
+from . import db as db_module
 from flask_restful import Resource, Api, reqparse
 from app.models import db, Lecturer, Tag, ContactInfo
 
@@ -11,6 +11,8 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, '../instance/tourdeflask.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 api = Api(app)
+
+db_module.init_app(app)
 
 class LecturerListAPI(Resource):
     def get(self):
@@ -119,7 +121,6 @@ try:
     os.makedirs(app.instance_path)
 except OSError:
     pass
-
 db.init_app(app)
 
 
