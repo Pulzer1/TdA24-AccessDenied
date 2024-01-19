@@ -52,7 +52,7 @@ class Lecturer(db.Model):
             "bio": self.bio,
             "price_per_hour": self.price_per_hour,
             "contact": self.contact.to_dict(),
-            "tags": [tag.to_dict() for tag in self.tags]
+            "tags": [{"uuid": tag.uuid, "name": tag.name} for tag in self.tags]
         } 
 
 lecturer_tags = db.Table('lecturer_tags',

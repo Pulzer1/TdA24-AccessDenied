@@ -35,11 +35,14 @@ class LecturerListAPI(Resource):
         parser.add_argument('claim', store_missing=False, default='')
         parser.add_argument('bio', store_missing=False, default='')
         parser.add_argument('price_per_hour', type=int, store_missing=False, default=0)
-        parser.add_argument('tags', action='append', store_missing=False, default=[])
         data = parser.parse_args()
 
         contact_data = data.get('contact') or {}
         contact_info = ContactInfo(telephone_numbers=contact_data.get("telephone_numbers", []), emails=contact_data.get('emails', []))
+
+        json_data = request.get_json()
+        tag_data = json_data.get('tags', [])  # Defaults to an empty list if tags are not provided
+
 
         # Lecturer without tags
         lecturer_data = {key: data.get(key, '') for key in ['first_name', 'last_name', 'title_before', 'middle_name', 'title_after', 'picture_url', 'location', 'claim', 'bio', 'price_per_hour']}
@@ -50,14 +53,16 @@ class LecturerListAPI(Resource):
         db.session.add(lecturer)
 
         # Handle tags
-        if 'tags' in data:
-            for tag_name in data['tags']:
-                tag = Tag.query.filter_by(name=tag_name).first()
-                if not tag:
-                    tag = Tag(name=tag_name)
-                    db.session.add(tag)
-                    db.session.commit()
-                lecturer.tags.append(tag)
+        for tag_item in tag_data:
+            tag_name = tag_item.get('name')
+            if tag_name:  # Check if 'name' key exists and is not empty
+                existing_tag = Tag.query.filter_by(name=tag_name).first()
+                if existing_tag:
+                    lecturer.tags.append(existing_tag)
+                else:
+                    new_tag = Tag(name=tag_name)
+                    db.session.add(new_tag)
+                    lecturer.tags.append(new_tag)
 
         print(lecturer.tags)   
         db.session.commit()
