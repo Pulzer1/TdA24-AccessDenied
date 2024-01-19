@@ -46,6 +46,9 @@ class LecturerListAPI(Resource):
         lecturer = Lecturer(**lecturer_data)
         lecturer.contact = contact_info
 
+        db.session.add(contact_info)
+        db.session.add(lecturer)
+
         # Handle tags
         if 'tags' in data:
             for tag_name in data['tags']:
@@ -56,8 +59,7 @@ class LecturerListAPI(Resource):
                     db.session.commit()
                 lecturer.tags.append(tag)
 
-        db.session.add(contact_info)
-        db.session.add(lecturer)
+        print(lecturer.tags)   
         db.session.commit()
         
         return lecturer.to_dict(), 200
