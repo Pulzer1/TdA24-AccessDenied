@@ -53,7 +53,7 @@ class LecturerListAPI(Resource):
         db.session.add(lecturer)
 
         # Handle tags
-        for tag_item in tag_data:
+        for tag_item in tag_data: #fwafwa
             tag_name = tag_item.get('name')
             if tag_name:  # Check if 'name' key exists and is not empty
                 existing_tag = Tag.query.filter_by(name=tag_name).first()
