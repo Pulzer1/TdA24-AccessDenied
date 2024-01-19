@@ -42,9 +42,8 @@ class LecturerListAPI(Resource):
         contact_info = ContactInfo(telephone_numbers=contact_data.get("telephone_numbers", []), emails=contact_data.get('emails', []))
 
         # Lecturer without tags
-        lecturer_data = {key: value for key, value in data.items() if key not in ['tags', 'contact']} # exclude tags and contact from the data
+        lecturer_data = {key: data.get(key, '') for key in ['first_name', 'last_name', 'title_before', 'middle_name', 'title_after', 'picture_url', 'location', 'claim', 'bio', 'price_per_hour']}
         lecturer = Lecturer(**lecturer_data)
-
         lecturer.contact = contact_info
 
         # Handle tags
